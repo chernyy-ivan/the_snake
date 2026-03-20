@@ -41,10 +41,9 @@ clock = pygame.time.Clock()
 
 # Тут опишите все классы игры.
 class GameObject:
-
-    """Базовый класс для всех объектов ,
-    который описывает общие свойства и методы."""
-
+    """Базовый класс для всех объектов,
+    который описывает общие свойства и методы.
+    """
     def __init__(self, position=(0, 0), body_color=(0, 0, 0)):
         self.position = position
         self.body_color = body_color
@@ -56,7 +55,6 @@ class GameObject:
 
 class Apple(GameObject):
     """Класс для яблока, который описывает его поведение"""
-
     def __init__(self):
         positions = self.randomize_position()
         super().__init__(positions, APPLE_COLOR)
@@ -79,8 +77,8 @@ class Apple(GameObject):
 
 class Snake(GameObject):
     """класс для змейки, который описывает ее поведение
-        и взаимодействие с другими объектами игры."""
-
+    и взаимодействие с другими объектами игры.
+    """
     def __init__(self):
         start_position = (((GRID_WIDTH // 2) * GRID_SIZE),
                           ((GRID_HEIGHT // 2) * GRID_SIZE))
@@ -102,10 +100,9 @@ class Snake(GameObject):
             self.next_direction = None
 
     def move(self, grow):
-        """Метод для перемещения змейки по полю, а так же описывает
-        поведение змейки при столкновении с границе.
-        И принцип поведения змейик при поедании яблока."""
-
+        """Метод для перемещения змейки по игровому полю и
+        обработки роста змейки при поедании яблока.
+        """
         head_position = self.get_head_position()
 
         dx, dy = self.direction
@@ -160,8 +157,8 @@ class Snake(GameObject):
 
 def handle_keys(game_object):
     """Функция для обработки нажатий клавиш
-      и изменения направления движения змейки."""
-
+    и изменения направления движения змейки.
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
