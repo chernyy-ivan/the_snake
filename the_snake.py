@@ -36,17 +36,19 @@ clock = pygame.time.Clock()
 
 
 class GameObject:
+    """Игровое поле"""
 
     def __init__(self, position=(0, 0), body_color=(0, 0, 0)):
         self.position = position
         self.body_color = body_color
 
     def draw(self):
-        """Метод для отрисовки объекта на игровом поле."""
+        """ Отрисовка объекта на игровом поле."""
         pass
 
 
 class Apple(GameObject):
+    """Яблоко на игровом поле, отрисовка и появление."""
 
     def __init__(self):
         position = self.randomize_position()
@@ -69,7 +71,7 @@ class Apple(GameObject):
 
 
 class Snake(GameObject):
-    """Класс змейки."""
+    """Змейка на игровом поле, движение и увеличение"""
 
     def __init__(self):
         super().__init__(START_POSITION, SNAKE_COLOR)
@@ -142,13 +144,13 @@ def main():
     snake = Snake()
     apple = Apple()
     screen.fill(BOARD_BACKGROUND_COLOR)
-    head_position = snake.get_head_position()
 
     while True:
         clock.tick(SPEED)
         handle_keys(snake)
         snake.update_direction()
         snake.move()
+        head_position = snake.get_head_position()
 
         if head_position in snake.positions[1:]:
             snake.reset()
