@@ -1,4 +1,4 @@
-from random import randint
+from random import randint, choice
 
 import pygame
 
@@ -76,6 +76,7 @@ class Snake(GameObject):
     def __init__(self):
         super().__init__(START_POSITION, SNAKE_COLOR)
         self.reset()
+        self.direction = RIGHT
 
     def get_head_position(self):
         """Возвращает позицию головы змейки."""
@@ -114,7 +115,7 @@ class Snake(GameObject):
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
         self.positions = [START_POSITION]
-        self.direction = RIGHT
+        self.direction = choice([UP, DOWN, RIGHT, LEFT])
         self.next_direction = None
         self.length = 1
         self.last = None
