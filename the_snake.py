@@ -1,4 +1,4 @@
-from random import randint, choice
+import random
 
 import pygame
 
@@ -57,8 +57,8 @@ class Apple(GameObject):
     def randomize_position(self, occupied_cells=None):
         """Устанавливает яблоку случайную позицию на поле."""
         while True:
-            x = randint(0, GRID_WIDTH - 1) * GRID_SIZE
-            y = randint(0, GRID_HEIGHT - 1) * GRID_SIZE
+            x = random.randint(0, GRID_WIDTH - 1) * GRID_SIZE
+            y = random.randint(0, GRID_HEIGHT - 1) * GRID_SIZE
             if occupied_cells is None or (x, y) not in occupied_cells:
                 self.position = (x, y)
                 return (x, y)
@@ -115,7 +115,7 @@ class Snake(GameObject):
     def reset(self):
         """Сбрасывает змейку в начальное состояние."""
         self.positions = [START_POSITION]
-        self.direction = choice([UP, DOWN, RIGHT, LEFT])
+        self.direction = random.choice([UP, DOWN, RIGHT, LEFT])
         self.next_direction = None
         self.length = 1
         self.last = None
