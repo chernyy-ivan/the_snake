@@ -43,7 +43,7 @@ class GameObject:
         self.body_color = body_color
 
     def draw(self):
-        """ Отрисовка объекта на игровом поле."""
+        """Отрисовка объекта на игровом поле."""
         pass
 
 
